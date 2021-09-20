@@ -1,0 +1,33 @@
+# this is newbilling config
+
+# Log
+[log]
+# possible values : debug, info, warn, error, fatal
+level = "fatal"
+
+[mysql]
+host = "192.168.49.2"
+port = "32316"
+user = "root"
+password = "p@ss52Dnb"
+[mysql.name]
+a="bbb"
+
+[redis]
+enable = true
+url = "192.168.49.2:32101"
+password = ""
+
+[rabbitmq]
+amqpurl = "amqp://admin:admin@192.168.49.2:31747/beatflow"
+
+[etcd]
+enable = true
+endpoints = "192.168.49.2:32071"
+
+[grpc]
+showerrorcause = true
+enableclientdiscover = false
+
+[Payment]
+PaymentCallbackUrl="http://103.61.39.4:19300/v1/payment:callback"

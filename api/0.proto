@@ -1,0 +1,56 @@
+// Copyright 2019 The KubeSphere Authors. All rights reserved.
+// Use of this source code is governed by a Apache license
+// that can be found in the LICENSE file.
+
+syntax = "proto3";
+package newbilling;
+
+// set go package name to pb
+option go_package = ".;pb";
+
+import "protoc-gen-swagger/options/annotations.proto";
+
+// 0.pb.go define the swagger project metadata
+option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
+	info: {
+		title: "NewBilling";
+		version: "V1.2";
+		contact: {
+			name: "NewBilling Project";
+			url: "https://git.internal.yunify.com/new-billing/newbilling";
+		};
+	};
+	schemes: HTTP;
+	schemes: HTTPS;
+	consumes: "application/json";
+	produces: "application/json";
+	security_definitions: {
+		security: {
+			key: "BearerAuth";
+			value: {
+				description: "The Authorization header must be set to Bearer followed by a space and a token. For example, 'Bearer vHUabiBEIKi8n1RdvWOjGFulGSM6zunb'.";
+				type: TYPE_API_KEY;
+				in: IN_HEADER;
+				name: "Authorization";
+			}
+		}
+//		security:{
+//			key: "AdminAuth";
+//			value: {
+//				type: TYPE_API_KEY;
+//				in: IN_HEADER;
+//				name: "Grpc-Metadata-nb";
+//			}
+//		}
+	}
+	security: {
+		security_requirement: {
+			key: "BearerAuth";
+			value: {};
+		}
+//		security_requirement: {
+//			key: "AdminAuth";
+//			value: {};
+//		}
+	}
+};
