@@ -132,7 +132,6 @@ func (e *EnvironmentLoader) generateFieldName(prefix string, name string) string
 	return strings.ToUpper(prefix) + "_" + fieldName
 }
 
-
 // fieldSet sets field value from the given string value. It converts the
 // string value in a sane way and is usefulf or environment variables or flags
 // which are by nature in string types.

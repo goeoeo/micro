@@ -13,11 +13,11 @@ import "protoc-gen-swagger/options/annotations.proto";
 // 0.pb.go define the swagger project metadata
 option (grpc.gateway.protoc_gen_swagger.options.openapiv2_swagger) = {
 	info: {
-		title: "NewBilling";
+		title: "Micro";
 		version: "V1.2";
 		contact: {
-			name: "NewBilling Project";
-			url: "https://git.internal.yunify.com/new-billing/newbilling";
+			name: "Micro Project";
+			url: "";
 		};
 	};
 	schemes: HTTP;

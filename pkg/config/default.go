@@ -1,8 +1,9 @@
 package config
 
 import (
-	"github.com/fatih/structs"
 	"reflect"
+
+	"github.com/fatih/structs"
 )
 
 //载入对象的默认值
@@ -10,7 +11,7 @@ type Default struct {
 	DefaultTagName string
 }
 
-func NewDefault()  *Default{
+func NewDefault() *Default {
 	return &Default{
 		DefaultTagName: "default",
 	}
@@ -31,9 +32,6 @@ func (d *Default) Load(s interface{}) (err error) {
 }
 
 func (d *Default) processTagField(field *structs.Field) error {
-	if !field.IsZero() {
-		return nil
-	}
 	switch field.Kind() {
 	case reflect.Struct:
 		for _, f := range field.Fields() {

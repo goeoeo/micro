@@ -42,18 +42,9 @@ generate: $(PROTO_FILES) Makefile
 	make -C $(GENERATE_SWAGGER_DIR)/spec
 	make -C $(GENERATE_SWAGGER_DIR)/swagger-ui
 
-	make publicapi
-	make appcenterapi
 
 	goimports -l -w -e  $(GENERATE_PB_DIR)
 	gofmt -l -w -e -s $(GENERATE_PB_DIR)
-
-publicapi: Makefile
-	jq -r -f $(GENERATE_SWAGGER_DIR)/spec/public_api.jq $(GENERATE_SWAGGER_DIR)/spec/api.swagger.json > ../web/resources/json/public.api.swagger.json
-
-appcenterapi: Makefile
-	jq -r -f $(GENERATE_SWAGGER_DIR)/spec/appcenter_api.jq $(GENERATE_SWAGGER_DIR)/spec/api.swagger.json > ../web/resources/json/appcenter.api.swagger.json
-
 
 
 build: Makefile
