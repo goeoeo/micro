@@ -1,0 +1,2581 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "production.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "ProductionManager"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/oplogs": {
+      "get": {
+        "summary": "操作日志-查询",
+        "operationId": "CooperateManager_DescribeOplog",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/cooperateDescribeOplogResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "searchWord",
+            "description": "分页参数\n模糊查询关键字.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sortKey",
+            "description": "排序字段 - 默认 create_time.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "reverse",
+            "description": "是否倒序排序 - value = 0 sort ASC, value = 1 sort DESC.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "offset",
+            "description": "数据库查询偏移位置 - 默认 0.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "limit",
+            "description": "数据库查询每页大小 - 默认 20, 最大值 200.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "userId",
+            "description": "用户ID.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "resourceId",
+            "description": "资源ID.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "resourceType",
+            "description": "资源类型.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "tags": [
+          "CooperateManager"
+        ]
+      }
+    },
+    "/v1/attributes": {
+      "get": {
+        "summary": "属性-查询",
+        "operationId": "ProductionManager_DescribeAttributes",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionDescribeAttributesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "searchWord",
+            "description": "分页参数\n模糊查询关键字.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sortKey",
+            "description": "排序字段 - 默认 create_time.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "reverse",
+            "description": "是否倒序排序 - value = 0 sort ASC, value = 1 sort DESC.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "offset",
+            "description": "数据库查询偏移位置 - 默认 0.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "limit",
+            "description": "数据库查询每页大小 - 默认 20, 最大值 200.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "attrId",
+            "description": "属性ID.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "prodId",
+            "description": "产品ID -=公共属性.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "valueType",
+            "description": "属性值类型.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "isNeedMeter",
+            "description": "是否需要计量 gotags:valid:\"OneOf(1,2)\".",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      },
+      "delete": {
+        "summary": "属性-删除",
+        "operationId": "ProductionManager_DeleteAttributes",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionDeleteAttributesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/productionDeleteAttributesRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      },
+      "post": {
+        "summary": "属性-创建",
+        "operationId": "ProductionManager_CreateAttribute",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionCreateAttributeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/productionCreateAttributeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      },
+      "patch": {
+        "summary": "属性-修改",
+        "operationId": "ProductionManager_ModifyAttribute",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionModifyAttributeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/productionModifyAttributeRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      }
+    },
+    "/v1/catalogs": {
+      "get": {
+        "summary": "产品目录-查询",
+        "operationId": "ProductionManager_DescribeCatalogs",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionDescribeCatalogsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "searchWord",
+            "description": "分页参数\n模糊查询关键字.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sortKey",
+            "description": "排序字段 - 默认 create_time.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "reverse",
+            "description": "是否倒序排序 - value = 0 sort ASC, value = 1 sort DESC.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "offset",
+            "description": "数据库查询偏移位置 - 默认 0.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "limit",
+            "description": "数据库查询每页大小 - 默认 20, 最大值 200.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "cataId",
+            "description": "产品目录ID.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "cataCode",
+            "description": "产品目录编码.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "name",
+            "description": "产品目录名称.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "parentCataId",
+            "description": "产品目录的父目录ID.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      },
+      "delete": {
+        "summary": "产品目录-删除",
+        "operationId": "ProductionManager_DeleteCatalogs",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionDeleteCatalogsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/productionDeleteCatalogsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      },
+      "post": {
+        "summary": "产品目录-创建",
+        "operationId": "ProductionManager_CreateCatalog",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionCreateCatalogResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/productionCreateCatalogRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      },
+      "patch": {
+        "summary": "产品目录-修改",
+        "operationId": "ProductionManager_ModifyCatalog",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionModifyCatalogResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/productionModifyCatalogRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      }
+    },
+    "/v1/filters": {
+      "get": {
+        "summary": "条件-查询",
+        "operationId": "ProductionManager_DescribeFilters",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionDescribeFiltersResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "searchWord",
+            "description": "分页参数\n模糊查询关键字.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sortKey",
+            "description": "排序字段 - 默认 create_time.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "reverse",
+            "description": "是否倒序排序 - value = 0 sort ASC, value = 1 sort DESC.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "offset",
+            "description": "数据库查询偏移位置 - 默认 0.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "limit",
+            "description": "数据库查询每页大小 - 默认 20, 最大值 200.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "attrId",
+            "description": "属性ID列表.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "prodId",
+            "description": "产品ID列表.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "name",
+            "description": "条件名称列表.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      },
+      "post": {
+        "summary": "条件-创建",
+        "description": "skip_oplog",
+        "operationId": "ProductionManager_CreateFilter",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionCreateFilterResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/productionCreateFilterRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      },
+      "patch": {
+        "summary": "条件-修改",
+        "operationId": "ProductionManager_ModifyFilter",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionModifyFilterResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/productionModifyFilterRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      }
+    },
+    "/v1/pricing": {
+      "post": {
+        "summary": "定价",
+        "description": "skip_oplog",
+        "operationId": "ProductionManager_Pricing",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionPricingResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/productionPricingRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      }
+    },
+    "/v1/products": {
+      "get": {
+        "summary": "产品-查询",
+        "operationId": "ProductionManager_DescribeProducts",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionDescribeProductsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "searchWord",
+            "description": "分页参数\n模糊查询关键字.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sortKey",
+            "description": "排序字段 - 默认 create_time.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "reverse",
+            "description": "是否倒序排序 - value = 0 sort ASC, value = 1 sort DESC.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "offset",
+            "description": "数据库查询偏移位置 - 默认 0.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "limit",
+            "description": "数据库查询每页大小 - 默认 20, 最大值 200.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "cataId",
+            "description": "产品目录ID.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "prodId",
+            "description": "产品ID.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "prodCode",
+            "description": "产品编码.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "name",
+            "description": "产品名称.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      },
+      "delete": {
+        "summary": "产品-删除",
+        "operationId": "ProductionManager_DeleteProducts",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionDeleteProductsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/productionDeleteProductsRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      },
+      "post": {
+        "summary": "产品-创建",
+        "operationId": "ProductionManager_CreateProduct",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionCreateProductResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/productionCreateProductRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      },
+      "patch": {
+        "summary": "产品-修改",
+        "operationId": "ProductionManager_ModifyProduct",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionModifyProductResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/productionModifyProductRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      }
+    },
+    "/v1/products:status": {
+      "patch": {
+        "summary": "产品-上架下架",
+        "operationId": "ProductionManager_ModifyProductStatus",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionModifyProductStatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/productionModifyProductStatusRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      }
+    },
+    "/v1/skus": {
+      "delete": {
+        "summary": "Sku-删除",
+        "operationId": "ProductionManager_DeleteSku",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionDeleteSkuResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/productionDeleteSkuRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      }
+    },
+    "/v1/specs": {
+      "get": {
+        "summary": "规格-列表",
+        "operationId": "ProductionManager_DescribeSpec",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionDescribeSpecResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "searchWord",
+            "description": "分页参数\n模糊查询关键字.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sortKey",
+            "description": "排序字段 - 默认 create_time.",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "reverse",
+            "description": "是否倒序排序 - value = 0 sort ASC, value = 1 sort DESC.",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "offset",
+            "description": "数据库查询偏移位置 - 默认 0.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "limit",
+            "description": "数据库查询每页大小 - 默认 20, 最大值 200.",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "specId",
+            "description": "ID列表.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "prodId",
+            "description": "产品ID列表.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "name",
+            "description": "条件名称列表.",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      },
+      "delete": {
+        "summary": "规格-删除",
+        "operationId": "ProductionManager_DeleteSpec",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionDeleteSpecReq"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/productionDeleteSpecReq"
+            }
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      },
+      "post": {
+        "summary": "规格-创建",
+        "operationId": "ProductionManager_CreateSpec",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionCreateSpecResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/productionCreateSpecRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      },
+      "patch": {
+        "summary": "规格-修改",
+        "operationId": "ProductionManager_ModifySpec",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionModifySpecResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/productionModifySpecRequest"
+            }
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      }
+    },
+    "/v1/specs/{specId}": {
+      "get": {
+        "summary": "规格-查询",
+        "operationId": "ProductionManager_GetSpec",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/productionGetSpecResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "specId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "prodId",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ProductionManager"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "cooperateDescribeOplogResponse": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "返回总数"
+        },
+        "catalogs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/cooperateOplog"
+          },
+          "title": "返回结果列表"
+        }
+      },
+      "title": "查询产品目录返回信息"
+    },
+    "cooperateOplog": {
+      "type": "object",
+      "properties": {
+        "requestId": {
+          "type": "string",
+          "title": "ID"
+        },
+        "userId": {
+          "type": "string",
+          "title": "用户ID"
+        },
+        "userName": {
+          "type": "string",
+          "title": "用户名称"
+        },
+        "uri": {
+          "type": "string",
+          "title": "api请求地址"
+        },
+        "reqParam": {
+          "type": "string",
+          "title": "api请求参数"
+        },
+        "respParam": {
+          "type": "string",
+          "title": "响应参数"
+        },
+        "resourceId": {
+          "type": "string",
+          "title": "资源id"
+        },
+        "resourceName": {
+          "type": "string",
+          "title": "资源名称"
+        },
+        "uriName": {
+          "type": "string",
+          "title": "api名称"
+        },
+        "reqStartTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "请求开始时间"
+        },
+        "reqEndTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "请求结束时间"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "PricingRequestAttr": {
+      "type": "object",
+      "properties": {
+        "attrId": {
+          "type": "string",
+          "title": "属性id或者code"
+        },
+        "attrValue": {
+          "type": "string",
+          "title": "属性值"
+        }
+      }
+    },
+    "PricingResponseSkuPrice": {
+      "type": "object",
+      "properties": {
+        "specId": {
+          "type": "string",
+          "title": "规格ID"
+        },
+        "skuId": {
+          "type": "string",
+          "title": "skuID"
+        },
+        "skuName": {
+          "type": "string",
+          "title": "sku名称"
+        },
+        "strategyId": {
+          "type": "string",
+          "title": "策略ID"
+        },
+        "price": {
+          "type": "number",
+          "format": "double",
+          "title": "价格"
+        },
+        "discountPrice": {
+          "type": "number",
+          "format": "double",
+          "title": "折扣价"
+        },
+        "discount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "sku月折扣"
+        },
+        "spec": {
+          "$ref": "#/definitions/productionSpec",
+          "title": "规格对象"
+        },
+        "sku": {
+          "$ref": "#/definitions/productionSku",
+          "title": "sku对象"
+        },
+        "priceDetail": {
+          "$ref": "#/definitions/productionPrice",
+          "title": "sku价格对象"
+        },
+        "attrs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productionAttribute"
+          },
+          "title": "命中此sku用到的属性"
+        }
+      }
+    },
+    "SkuMonthDiscount": {
+      "type": "object",
+      "properties": {
+        "discount": {
+          "type": "integer",
+          "format": "int32",
+          "title": "折扣"
+        },
+        "month": {
+          "type": "string",
+          "title": "月份"
+        }
+      },
+      "title": "价格"
+    },
+    "productionAttribute": {
+      "type": "object",
+      "properties": {
+        "attrId": {
+          "type": "string",
+          "title": "属性ID"
+        },
+        "attrCode": {
+          "type": "string",
+          "title": "属性编码"
+        },
+        "value": {
+          "type": "string",
+          "title": "value"
+        },
+        "prodId": {
+          "type": "string",
+          "title": "产品ID"
+        },
+        "name": {
+          "type": "string",
+          "title": "属性名称"
+        },
+        "description": {
+          "type": "string",
+          "title": "属性描述"
+        },
+        "valueType": {
+          "type": "string",
+          "title": "属性值类型"
+        },
+        "unit": {
+          "type": "string",
+          "title": "属性值单位"
+        },
+        "isNeedMeter": {
+          "type": "integer",
+          "format": "int64",
+          "title": "是否需要计量"
+        },
+        "valueConstraint": {
+          "type": "string",
+          "title": "属性约束"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "创建时间"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "更新时间"
+        }
+      },
+      "title": "属性"
+    },
+    "productionCatalog": {
+      "type": "object",
+      "properties": {
+        "cataId": {
+          "type": "string",
+          "title": "产品目录ID"
+        },
+        "cataCode": {
+          "type": "string",
+          "title": "产品目录编码"
+        },
+        "name": {
+          "type": "string",
+          "title": "产品目录名称"
+        },
+        "parentCataId": {
+          "type": "string",
+          "title": "产品目录的父目录ID"
+        },
+        "path": {
+          "type": "string",
+          "title": "产品目录的路径 -  例如：cata_iaas.cata_compute"
+        },
+        "displayOrder": {
+          "type": "integer",
+          "format": "int64",
+          "title": "显示序号"
+        },
+        "level": {
+          "type": "integer",
+          "format": "int64",
+          "title": "产品目录的层级"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "创建时间"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "更新时间"
+        }
+      },
+      "title": "产品目录"
+    },
+    "productionCreateAttributeRequest": {
+      "type": "object",
+      "properties": {
+        "prodId": {
+          "type": "string",
+          "title": "产品ID  @gotags:valid:\"Required\""
+        },
+        "name": {
+          "type": "string",
+          "title": "属性名称  @gotags:valid:\"Required;MaxSize(30)\""
+        },
+        "attrCode": {
+          "type": "string",
+          "title": "属性编码"
+        },
+        "description": {
+          "type": "string",
+          "title": "属性描述"
+        },
+        "valueType": {
+          "type": "string",
+          "title": "属性值类型  @gotags:valid:\"Required;OneOf(string,number)\""
+        },
+        "unit": {
+          "type": "string",
+          "title": "属性值单位"
+        },
+        "isNeedMeter": {
+          "type": "integer",
+          "format": "int64",
+          "title": "是否需要计量 gotags:valid:\"OneOf(1,2)\""
+        },
+        "valueConstraint": {
+          "type": "string",
+          "title": "属性约束 number:{\"max\":10,\"min\":5,\"sep::2}"
+        }
+      },
+      "title": "创建属性请求信息"
+    },
+    "productionCreateAttributeResponse": {
+      "type": "object",
+      "properties": {
+        "attrId": {
+          "type": "string",
+          "title": "属性ID @gotags:resource_id:\"true\""
+        },
+        "name": {
+          "type": "string",
+          "title": "@gotags:resource_name:\"true\""
+        }
+      },
+      "title": "创建属性返回信息"
+    },
+    "productionCreateCatalogRequest": {
+      "type": "object",
+      "properties": {
+        "cataCode": {
+          "type": "string",
+          "title": "产品目录编码"
+        },
+        "name": {
+          "type": "string",
+          "title": "产品目录名称 @gotags:valid:\"Required;MaxSize(30)\""
+        },
+        "parentCataId": {
+          "type": "string",
+          "title": "产品目录的父目录ID"
+        }
+      },
+      "title": "创建产品目录请求信息"
+    },
+    "productionCreateCatalogResponse": {
+      "type": "object",
+      "properties": {
+        "cataId": {
+          "type": "string",
+          "title": "产品目录ID @gotags:resource_id:\"true\""
+        },
+        "name": {
+          "type": "string",
+          "title": "产品目录名称 @gotags:resource_name:\"true\""
+        }
+      },
+      "title": "创建产品目录返回信息"
+    },
+    "productionCreateFilterRequest": {
+      "type": "object",
+      "properties": {
+        "prodId": {
+          "type": "string",
+          "title": "产品ID @gotags:valid:\"Required\""
+        },
+        "attrId": {
+          "type": "string",
+          "title": "属性ID @gotags:valid:\"Required\""
+        },
+        "filters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productionCreateFilterRequestFilter"
+          },
+          "title": "条件 @gotags:valid:\"Required\""
+        }
+      },
+      "title": "创建条件请求信息"
+    },
+    "productionCreateFilterRequestFilter": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "title": "条件名称"
+        },
+        "operator": {
+          "type": "string",
+          "title": "条件操作符"
+        },
+        "attrValue": {
+          "type": "string",
+          "title": "条件值"
+        }
+      }
+    },
+    "productionCreateFilterResponse": {
+      "type": "object",
+      "properties": {
+        "prodId": {
+          "type": "string"
+        },
+        "attrId": {
+          "type": "string"
+        }
+      },
+      "title": "创建条件返回信息"
+    },
+    "productionCreateProductRequest": {
+      "type": "object",
+      "properties": {
+        "cataId": {
+          "type": "string",
+          "title": "产品目录ID  @gotags:valid:\"Required\""
+        },
+        "name": {
+          "type": "string",
+          "title": "产品名称  @gotags:valid:\"Required;MaxSize(60)\""
+        },
+        "billingSystem": {
+          "type": "string",
+          "title": "计费系统 @gotags:valid:\"Required;OneOf(nb,ob)\""
+        },
+        "prodCode": {
+          "type": "string",
+          "title": "产品编码"
+        },
+        "description": {
+          "type": "string",
+          "title": "产品描述"
+        },
+        "remark": {
+          "type": "string",
+          "title": "产品备注"
+        },
+        "position": {
+          "type": "integer",
+          "format": "int64",
+          "title": "排序"
+        }
+      },
+      "title": "创建产品请求信息"
+    },
+    "productionCreateProductResponse": {
+      "type": "object",
+      "properties": {
+        "prodId": {
+          "type": "string",
+          "title": "产品ID@gotags:resource_id:\"true\""
+        },
+        "name": {
+          "type": "string",
+          "title": "产品名@gotags:resource_name:\"true\""
+        }
+      },
+      "title": "创建产品返回信息"
+    },
+    "productionCreateSpecRequest": {
+      "type": "object",
+      "properties": {
+        "specCode": {
+          "type": "string",
+          "title": "规格code"
+        },
+        "prodId": {
+          "type": "string",
+          "title": "产品ID"
+        },
+        "name": {
+          "type": "string",
+          "title": "规格名称"
+        },
+        "description": {
+          "type": "string",
+          "title": "规格描述"
+        },
+        "pricingType": {
+          "type": "string",
+          "title": "定价方式: 按次、枚举、线性、阶梯、套餐包"
+        },
+        "skus": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productionSku"
+          },
+          "title": "SKus"
+        }
+      }
+    },
+    "productionCreateSpecResponse": {
+      "type": "object",
+      "properties": {
+        "specId": {
+          "type": "string",
+          "title": "@gotags:resource_id:\"true\""
+        },
+        "name": {
+          "type": "string",
+          "title": "@gotags:resource_name:\"true\""
+        },
+        "skus": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productionCreateSpecResponseSku"
+          }
+        }
+      }
+    },
+    "productionCreateSpecResponseSku": {
+      "type": "object",
+      "properties": {
+        "skuId": {
+          "type": "string"
+        }
+      }
+    },
+    "productionDeleteAttributesRequest": {
+      "type": "object",
+      "properties": {
+        "prodId": {
+          "type": "string",
+          "title": "产品ID  @gotags:valid:\"Required\""
+        },
+        "attrId": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "属性ID列表 @gotags:valid:\"Required\""
+        }
+      },
+      "title": "删除属性请求信息"
+    },
+    "productionDeleteAttributesResponse": {
+      "type": "object",
+      "properties": {
+        "prodId": {
+          "type": "string"
+        },
+        "attrId": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "属性ID列表@gotags:resource_id:\"true\""
+        },
+        "name": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "@gotags:resource_name:\"true\""
+        }
+      },
+      "title": "删除属性返回信息"
+    },
+    "productionDeleteCatalogsRequest": {
+      "type": "object",
+      "properties": {
+        "cataId": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "产品目录ID列表"
+        }
+      },
+      "title": "删除产品目录请求信息"
+    },
+    "productionDeleteCatalogsResponse": {
+      "type": "object",
+      "properties": {
+        "cataId": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "产品目录ID列表  @gotags:resource_id:\"true\""
+        },
+        "name": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "产品名称 @gotags:resource_name:\"true\""
+        }
+      },
+      "title": "删除产品目录返回信息"
+    },
+    "productionDeleteProductsRequest": {
+      "type": "object",
+      "properties": {
+        "prodId": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "产品ID列表  @gotags:valid:\"Required\""
+        }
+      },
+      "title": "删除产品请求信息"
+    },
+    "productionDeleteProductsResponse": {
+      "type": "object",
+      "properties": {
+        "prodId": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "产品ID列表 @gotags:resource_id:\"true\""
+        },
+        "name": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "@gotags:resource_name:\"true\""
+        }
+      },
+      "title": "删除产品返回信息"
+    },
+    "productionDeleteSkuRequest": {
+      "type": "object",
+      "properties": {
+        "prodId": {
+          "type": "string"
+        },
+        "specId": {
+          "type": "string"
+        },
+        "skuIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "DeleteSpec 删除sku"
+    },
+    "productionDeleteSkuResponse": {
+      "type": "object",
+      "properties": {
+        "prodId": {
+          "type": "string"
+        },
+        "specId": {
+          "type": "string"
+        },
+        "skuIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "@gotags:resource_id:\"true\""
+        },
+        "names": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "title": "@gotags:resource_name:\"true\""
+        }
+      }
+    },
+    "productionDeleteSpecReq": {
+      "type": "object",
+      "properties": {
+        "prodId": {
+          "type": "string"
+        },
+        "specId": {
+          "type": "string"
+        }
+      },
+      "title": "DeleteSpec 删除规格"
+    },
+    "productionDescribeAttributesResponse": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "返回总数"
+        },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productionAttribute"
+          },
+          "title": "返回结果列表"
+        }
+      },
+      "title": "查询属性返回信息"
+    },
+    "productionDescribeCatalogsResponse": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "返回总数"
+        },
+        "catalogs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productionCatalog"
+          },
+          "title": "返回结果列表"
+        }
+      },
+      "title": "查询产品目录返回信息"
+    },
+    "productionDescribeFiltersResponse": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "返回总数"
+        },
+        "filters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productionFilter"
+          },
+          "title": "返回结果列表"
+        }
+      },
+      "title": "查询条件返回信息"
+    },
+    "productionDescribeProductsResponse": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "title": "返回总数"
+        },
+        "products": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productionProduct"
+          },
+          "title": "返回结果列表"
+        }
+      },
+      "title": "查询产品返回信息"
+    },
+    "productionDescribeSpecResponse": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64"
+        },
+        "specs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productionSpec"
+          }
+        }
+      }
+    },
+    "productionFilter": {
+      "type": "object",
+      "properties": {
+        "filterId": {
+          "type": "string",
+          "title": "条件ID"
+        },
+        "prodId": {
+          "type": "string",
+          "title": "产品ID"
+        },
+        "name": {
+          "type": "string",
+          "title": "条件名称"
+        },
+        "attrId": {
+          "type": "string",
+          "title": "属性ID"
+        },
+        "operator": {
+          "type": "string",
+          "title": "条件操作符"
+        },
+        "attrValue": {
+          "type": "string",
+          "title": "属性值"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "创建时间"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "更新时间"
+        }
+      },
+      "title": "条件"
+    },
+    "productionGetSpecResponse": {
+      "type": "object",
+      "properties": {
+        "spec": {
+          "$ref": "#/definitions/productionSpec"
+        },
+        "skus": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productionSku"
+          }
+        }
+      }
+    },
+    "productionModifyAttributeRequest": {
+      "type": "object",
+      "properties": {
+        "attrId": {
+          "type": "string",
+          "title": "属性ID  @gotags:valid:\"Required\""
+        },
+        "prodId": {
+          "type": "string",
+          "title": "产品ID  @gotags:valid:\"Required\""
+        },
+        "name": {
+          "type": "string",
+          "title": "属性名称 @gotags:valid:\"MaxSize(30)\""
+        },
+        "attrCode": {
+          "type": "string",
+          "title": "属性编码"
+        },
+        "description": {
+          "type": "string",
+          "title": "属性描述"
+        },
+        "valueType": {
+          "type": "string",
+          "title": "属性值类型  @gotags:valid:\"OneOf(enum,number)\""
+        },
+        "unit": {
+          "type": "string",
+          "title": "属性值单位"
+        },
+        "isNeedMeter": {
+          "type": "integer",
+          "format": "int64",
+          "title": "是否需要计量 @gotags:valid:\"OneOf(1,2)\""
+        },
+        "valueConstraint": {
+          "type": "integer",
+          "format": "int64",
+          "title": "属性约束 number:{\"max\":10,\"min\":5,\"sep::2}"
+        }
+      },
+      "title": "修改属性请求信息"
+    },
+    "productionModifyAttributeResponse": {
+      "type": "object",
+      "properties": {
+        "attrId": {
+          "type": "string",
+          "title": "属性ID @gotags:resource_id:\"true\""
+        },
+        "name": {
+          "type": "string",
+          "title": "@gotags:resource_name:\"true\""
+        }
+      },
+      "title": "修改属性返回信息"
+    },
+    "productionModifyCatalogRequest": {
+      "type": "object",
+      "properties": {
+        "cataId": {
+          "type": "string",
+          "title": "产品目录ID"
+        },
+        "cataCode": {
+          "type": "string",
+          "title": "产品目录编码"
+        },
+        "name": {
+          "type": "string",
+          "title": "产品目录名称  @gotags:valid:\"MaxSize(30)\""
+        },
+        "parentCataId": {
+          "type": "string",
+          "title": "产品目录的父目录ID"
+        }
+      },
+      "title": "修改产品目录请求信息"
+    },
+    "productionModifyCatalogResponse": {
+      "type": "object",
+      "properties": {
+        "cataId": {
+          "type": "string",
+          "title": "产品目录ID @gotags:resource_id:\"true\""
+        },
+        "name": {
+          "type": "string",
+          "title": "产品目录名称 @gotags:resource_name:\"true\""
+        }
+      },
+      "title": "修改产品目录返回信息"
+    },
+    "productionModifyFilterRequest": {
+      "type": "object",
+      "properties": {
+        "prodId": {
+          "type": "string",
+          "title": "产品ID @gotags:valid:\"Required\""
+        },
+        "filterId": {
+          "type": "string",
+          "title": "条件ID @gotags:valid:\"Required\""
+        },
+        "filterCode": {
+          "type": "string",
+          "title": "条件编码"
+        },
+        "name": {
+          "type": "string",
+          "title": "条件名称"
+        },
+        "operator": {
+          "type": "string",
+          "title": "条件操作符"
+        },
+        "rightValue": {
+          "type": "string",
+          "title": "条件右值"
+        }
+      },
+      "title": "修改条件请求信息"
+    },
+    "productionModifyFilterResponse": {
+      "type": "object",
+      "properties": {
+        "filterId": {
+          "type": "string",
+          "title": "条件ID@gotags:resource_id:\"true\""
+        },
+        "name": {
+          "type": "string",
+          "title": "@gotags:resource_name:\"true\""
+        }
+      },
+      "title": "修改条件返回信息"
+    },
+    "productionModifyProductRequest": {
+      "type": "object",
+      "properties": {
+        "prodId": {
+          "type": "string",
+          "title": "产品ID  @gotags:valid:\"Required\""
+        },
+        "cataId": {
+          "type": "string",
+          "title": "产品目录ID"
+        },
+        "prodCode": {
+          "type": "string",
+          "title": "产品编码"
+        },
+        "name": {
+          "type": "string",
+          "title": "产品名称  @gotags:valid:\"MaxSize(60)\""
+        },
+        "description": {
+          "type": "string",
+          "title": "产品描述"
+        },
+        "remark": {
+          "type": "string",
+          "title": "产品备注"
+        },
+        "position": {
+          "type": "integer",
+          "format": "int64",
+          "title": "排序"
+        }
+      },
+      "title": "修改产品请求信息"
+    },
+    "productionModifyProductResponse": {
+      "type": "object",
+      "properties": {
+        "prodId": {
+          "type": "string",
+          "title": "产品ID @gotags:resource_id:\"true\""
+        },
+        "name": {
+          "type": "string",
+          "title": "@gotags:resource_name:\"true\""
+        }
+      },
+      "title": "修改产品返回信息"
+    },
+    "productionModifyProductStatusRequest": {
+      "type": "object",
+      "properties": {
+        "prodId": {
+          "type": "string",
+          "title": "产品ID  @gotags:valid:\"Required\""
+        },
+        "status": {
+          "type": "string",
+          "title": "产品状态  @gotags:valid:\"Required\""
+        }
+      },
+      "title": "修改产品请求信息"
+    },
+    "productionModifyProductStatusResponse": {
+      "type": "object",
+      "properties": {
+        "prodId": {
+          "type": "string",
+          "title": "@gotags:resource_id:\"true\""
+        },
+        "status": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string",
+          "title": "@gotags:resource_name:\"true\""
+        }
+      }
+    },
+    "productionModifySpecRequest": {
+      "type": "object",
+      "properties": {
+        "specId": {
+          "type": "string"
+        },
+        "specCode": {
+          "type": "string",
+          "title": "规格code"
+        },
+        "prodId": {
+          "type": "string",
+          "title": "产品ID"
+        },
+        "name": {
+          "type": "string",
+          "title": "规格名称"
+        },
+        "description": {
+          "type": "string",
+          "title": "规格描述"
+        },
+        "skus": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productionSku"
+          },
+          "title": "SKus"
+        }
+      }
+    },
+    "productionModifySpecResponse": {
+      "type": "object",
+      "properties": {
+        "specId": {
+          "type": "string",
+          "title": "@gotags:resource_id:\"true\""
+        },
+        "name": {
+          "type": "string",
+          "title": "@gotags:resource_name:\"true\""
+        },
+        "skus": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productionModifySpecResponseSku"
+          }
+        }
+      }
+    },
+    "productionModifySpecResponseSku": {
+      "type": "object",
+      "properties": {
+        "skuId": {
+          "type": "string"
+        }
+      }
+    },
+    "productionPrice": {
+      "type": "object",
+      "properties": {
+        "priceId": {
+          "type": "string",
+          "title": "价格ID"
+        },
+        "prodId": {
+          "type": "string",
+          "title": "产品ID"
+        },
+        "strategyId": {
+          "type": "string",
+          "title": "策略ID"
+        },
+        "skuId": {
+          "type": "string",
+          "title": "skuID"
+        },
+        "price": {
+          "type": "number",
+          "format": "double",
+          "title": "价格"
+        },
+        "priceType": {
+          "type": "string",
+          "title": "价格类型 month=按月 hour=按需 month_cost=按月成本 base=基础价格"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "创建时间"
+        }
+      }
+    },
+    "productionPricingRequest": {
+      "type": "object",
+      "properties": {
+        "detail": {
+          "type": "boolean",
+          "title": "是否需要详细信息"
+        },
+        "pricingVersion": {
+          "type": "string",
+          "title": "使用指定定价数据版本进行定价 \"\"=表示使用最新的上架数据 \"latest\"=使用最新数据（可能未上架）"
+        },
+        "prodId": {
+          "type": "string",
+          "title": "产品ID或者code"
+        },
+        "attrs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PricingRequestAttr"
+          },
+          "title": "属性键值对"
+        }
+      },
+      "title": "PricingReq 定价请求"
+    },
+    "productionPricingResponse": {
+      "type": "object",
+      "properties": {
+        "prodId": {
+          "type": "string",
+          "title": "产品IdOrCode"
+        },
+        "price": {
+          "type": "number",
+          "format": "double",
+          "title": "总价"
+        },
+        "discountPrice": {
+          "type": "number",
+          "format": "double",
+          "title": "总折扣价"
+        },
+        "skus": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PricingResponseSkuPrice"
+          },
+          "title": "skus"
+        },
+        "pricingVersion": {
+          "type": "string",
+          "title": "定价数据版本"
+        }
+      }
+    },
+    "productionProduct": {
+      "type": "object",
+      "properties": {
+        "prodId": {
+          "type": "string",
+          "title": "产品ID"
+        },
+        "cataId": {
+          "type": "string",
+          "title": "产品目录ID"
+        },
+        "prodCode": {
+          "type": "string",
+          "title": "产品编码"
+        },
+        "name": {
+          "type": "string",
+          "title": "产品名称"
+        },
+        "description": {
+          "type": "string",
+          "title": "产品描述"
+        },
+        "remark": {
+          "type": "string",
+          "title": "备注"
+        },
+        "status": {
+          "type": "string",
+          "title": "状态 draft=草稿 sale=售卖中 no_sale=禁止售卖"
+        },
+        "billingSystem": {
+          "type": "string",
+          "title": "产品所在计费系统"
+        },
+        "statusTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "状态变更时间"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "创建时间"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "更新时间"
+        }
+      },
+      "title": "产品"
+    },
+    "productionSku": {
+      "type": "object",
+      "properties": {
+        "skuId": {
+          "type": "string",
+          "title": "skuId"
+        },
+        "skuCode": {
+          "type": "string",
+          "title": "sku code"
+        },
+        "prodId": {
+          "type": "string",
+          "title": "产品ID"
+        },
+        "specId": {
+          "type": "string",
+          "title": "规格ID"
+        },
+        "name": {
+          "type": "string",
+          "title": "规格名称"
+        },
+        "placeTimes": {
+          "type": "string",
+          "format": "int64",
+          "title": "订购次数 1=一次，2=订购多次"
+        },
+        "attrId": {
+          "type": "string",
+          "title": "关联属性"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "创建时间"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "更新时间"
+        },
+        "monthDiscounts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SkuMonthDiscount"
+          },
+          "title": "月折扣"
+        },
+        "prices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productionSkuPrice"
+          },
+          "title": "价格"
+        },
+        "filters": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/productionSkuFilter"
+          },
+          "title": "条件"
+        }
+      },
+      "title": "Sku"
+    },
+    "productionSkuFilter": {
+      "type": "object",
+      "properties": {
+        "attrId": {
+          "type": "string",
+          "title": "属性ID"
+        },
+        "operator": {
+          "type": "string",
+          "title": "条件操作符"
+        },
+        "attrValue": {
+          "type": "string",
+          "title": "属性值"
+        }
+      }
+    },
+    "productionSkuPrice": {
+      "type": "object",
+      "properties": {
+        "price": {
+          "type": "number",
+          "format": "double",
+          "title": "价格"
+        },
+        "priceType": {
+          "type": "string",
+          "title": "价格类型 month=按月 hour=按需 month_cost=按月成本 base=基础价格"
+        }
+      },
+      "title": "价格"
+    },
+    "productionSpec": {
+      "type": "object",
+      "properties": {
+        "specId": {
+          "type": "string",
+          "title": "规格ID"
+        },
+        "specCode": {
+          "type": "string",
+          "title": "规格code"
+        },
+        "prodId": {
+          "type": "string",
+          "title": "产品ID"
+        },
+        "name": {
+          "type": "string",
+          "title": "规格名称"
+        },
+        "description": {
+          "type": "string",
+          "title": "规格描述"
+        },
+        "pricingType": {
+          "type": "string",
+          "title": "定价方式: 按次、枚举、线性、阶梯、套餐包"
+        },
+        "createTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "创建时间"
+        },
+        "updateTime": {
+          "type": "string",
+          "format": "date-time",
+          "title": "更新时间"
+        }
+      },
+      "title": "规格"
+    }
+  }
+}
