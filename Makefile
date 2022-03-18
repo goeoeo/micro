@@ -8,3 +8,9 @@ PROTO_BUILDER_IMAGE_NAME:=$(DOCKER_REGISTRY)/$(DOCKER_NAMESPACE)/proto-builder:l
 
 RUN_IN_DOCKER:=docker run -i  -v `pwd`:/go/project -w /go/project $(PROTO_BUILDER_IMAGE_NAME)
 
+default:
+	git pull
+	cd pkg/active && go generate
+	git add .
+	git commit -m "code update"
+	git push
