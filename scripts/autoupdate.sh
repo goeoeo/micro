@@ -3,7 +3,7 @@
 cd /home/yu/code/micro
 git pull
 cd /home/yu/code/micro/pkg/active
-whereis go
+/usr/local/go/bin/go version
 cd /home/yu/code/micro
 git add .
 git commit -m "code update"
