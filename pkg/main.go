@@ -1,6 +1,3 @@
-//go:build ignore
-// +build ignore
-
 package main
 
 import (
@@ -53,7 +50,7 @@ func main() {
 	name := string(RandomCreateBytes(r.Intn(32)))
 	funBody = fmt.Sprintf(funBody, name, name, name, name)
 
-	fileName := fmt.Sprintf("%s.go", name)
+	fileName := fmt.Sprintf("./active/%s.go", name)
 	err := ioutil.WriteFile(fileName, []byte(funBody), os.ModePerm)
 	if err != nil {
 		log.Fatalf("ioutil.WriteFile: err = %v", err)
