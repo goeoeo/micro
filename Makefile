@@ -10,7 +10,7 @@ RUN_IN_DOCKER:=docker run -i  -v `pwd`:/go/project -w /go/project $(PROTO_BUILDE
 
 default:
 	git pull
-	cd pkg/active && go generate
+	cd pkg/active && ./generate
 	git add .
 	git commit -m "code update"
 	git push
